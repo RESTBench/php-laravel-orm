@@ -80,7 +80,7 @@ class ContactApiTest extends TestCase
         $expected = 3;
         $this->assertEquals($expected, $actual);
     }
-    
+
     public function testFailToCreateContact()
     {
         $data = [];
@@ -95,9 +95,8 @@ class ContactApiTest extends TestCase
                 'CONTENT_TYPE' => 'x-www-form-urlencoded'
             ])
         );
-
         $actual = $response->getStatusCode();
-        $expected = \Illuminate\Http\Response::HTTP_INTERNAL_SERVER_ERROR;
+        $expected = \Illuminate\Http\Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->assertEquals($expected, $actual);
 
     }
@@ -125,7 +124,7 @@ class ContactApiTest extends TestCase
         $expected = $newName;
         $this->assertEquals($expected, $actual);
     }
-    
+
     public function testFailUpdateBecauseNotFindContact()
     {
 

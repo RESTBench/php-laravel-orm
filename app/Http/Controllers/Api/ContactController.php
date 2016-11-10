@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 use App\Http\Controllers\Controller;
 
 use App\Domains\Contacts\Contact;
@@ -22,10 +23,10 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ContactRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         if (!Contact::create($request->all())) {
             return response()->json(['error' => 'contact_store_error'], 500);
@@ -47,11 +48,11 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ContactRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactRequest $request, $id)
     {
         $contact = Contact::find($id);
         if (!$contact) {
