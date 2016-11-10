@@ -28,7 +28,7 @@ $factory->define(App\Domains\Contacts\Contact::class, function (Faker\Generator 
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'age' => $faker->numberBetween(0, 80),
+        'age' => $faker->numberBetween(18, 99),
     ];
 });
 
